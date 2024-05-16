@@ -1,29 +1,33 @@
 {
-    "manifest_version": 3,
-    "name": "Chrome Extension",
-    "description": "",
-    "options_page": "",
-    "background": { 
-        "service_worker": "" 
-    },
-    "action": {
-      "default_popup": "",
-      "default_icon": ""
-    },
-    "icons": {
-      "128": ""
-    },
-    "content_scripts": [
-      {
-        "matches": ["http://*/*", "https://*/*", "<all_urls>"],
-        "js": [""],
-        "css": [""]
-      }
-    ],
-    "web_accessible_resources": [
-      {
-        "resources": [],
-        "matches": []
-      }
-    ]
-  }
+  "manifest_version": 3,
+  "name": "Chrome Extension",
+  "description": "",
+  "version": "1.0",
+  "options_page": "settings.html",
+  "background": { 
+      "service_worker": "" 
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": ""
+  },
+  "icons": {
+    "16": "",
+    "32": "",
+    "48": "",
+    "128": ""
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "<all_urls>"],
+      "js": [""],
+      "css": [""]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [],
+      "matches": []
+    }
+  ]
+}

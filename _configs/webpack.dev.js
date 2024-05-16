@@ -14,6 +14,11 @@ const devConfiguration = {
     compress: true,
     hot: true,
     port: 3000,
+    webSocketServer: "sockjs",
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
+    allowedHosts: "all",
   },
 };
 
