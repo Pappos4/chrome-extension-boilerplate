@@ -5,7 +5,7 @@
   "version": "1.0",
   "options_page": "settings.html",
   "background": { 
-      "service_worker": "" 
+      "service_worker": "js/background.bundle.js" 
   },
   "action": {
     "default_popup": "popup.html",
@@ -20,7 +20,7 @@
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*", "<all_urls>"],
-      "js": [""],
+      "js": ["js/contentScript.bundle.js"],
       "css": [""]
     }
   ],

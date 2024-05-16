@@ -1,6 +1,8 @@
 const { merge } = require("webpack-merge");
 const path = require("path");
 
+const TerserPlugin = require("terser-webpack-plugin");
+
 const common = require("./webpack.common");
 
 /** @type { import('webpack').Configuration } */
@@ -12,11 +14,12 @@ const prodConfiguration = {
   output: {
     path: path.resolve(__dirname, "../dist"),
     publicPath: "/",
-    filename: "js/[name].[contenthash].bundle.js",
+    filename: "js/[name].bundle.js",
   },
 
   optimization: {
     minimize: true,
+    minimizer: [new TerserPlugin()],
     runtimeChunk: {
       name: "runtime",
     },

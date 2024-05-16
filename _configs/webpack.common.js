@@ -10,8 +10,13 @@ const buildDirectory = path.resolve(__dirname, "../dist");
 /** @type { import('webpack').Configuration } */
 const options = {
   entry: {
+    // Pages
     popup: path.join(__dirname, "../src/popup/index.tsx"),
     settings: path.join(__dirname, "../src/settings/index.tsx"),
+
+    // Api
+    background: path.join(__dirname, "../src/service_worker/index.ts"),
+    contentScript: path.join(__dirname, "../src/index.ts"),
   },
 
   output: {
