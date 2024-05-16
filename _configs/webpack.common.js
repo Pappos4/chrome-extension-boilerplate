@@ -2,20 +2,21 @@ const webpack = require("webpack");
 const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const isDevelopment = process.env.NODE_ENV === "development";
+const buildDirectory = path.resolve(__dirname, "../dist");
 
 /** @type { import('webpack').Configuration } */
 const options = {
   entry: {
     popup: path.join(__dirname, "../src/popup/index.tsx"),
+    settings: path.join(__dirname, "../src/settings/index.tsx"),
   },
 
   output: {
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "../dist"),
-    publicPath: "/",
-    clean: true,
+    path: buildDirectory,
   },
 
   plugins: [
@@ -27,6 +28,22 @@ const options = {
       template: path.join(__dirname, "../src", "popup", "index.html"),
       filename: "popup.html",
       chunks: ["popup"],
+    }),
+
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "../src", "settings", "index.html"),
+      filename: "settings.html",
+      chunks: ["settings"],
+    }),
+
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: "public/manifest.json",
+          to: buildDirectory,
+          force: true,
+        },
+      ],
     }),
   ],
 
