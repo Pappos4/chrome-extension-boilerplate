@@ -8,20 +8,12 @@
       "service_worker": "js/background.bundle.js" 
   },
   "action": {
-    "default_popup": "popup.html",
-    "default_icon": ""
-  },
-  "icons": {
-    "16": "",
-    "32": "",
-    "48": "",
-    "128": ""
+    "default_popup": "popup.html"
   },
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*", "<all_urls>"],
-      "js": ["js/contentScript.bundle.js"],
-      "css": [""]
+      "js": ["js/contentScript.bundle.js"]
     }
   ],
   "web_accessible_resources": [

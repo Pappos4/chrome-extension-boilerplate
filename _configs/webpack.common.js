@@ -30,13 +30,13 @@ const options = {
     }),
 
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "../src", "popup", "index.html"),
+      template: path.join(__dirname, "../src/popup/index.html"),
       filename: "popup.html",
       chunks: ["popup"],
     }),
 
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "../src", "settings", "index.html"),
+      template: path.join(__dirname, "../src/settings/index.html"),
       filename: "settings.html",
       chunks: ["settings"],
     }),
@@ -93,7 +93,12 @@ const options = {
                     corejs: 3,
                   },
                 ],
-                "@babel/react",
+                [
+                  "@babel/preset-react",
+                  {
+                    runtime: "automatic",
+                  },
+                ],
                 "@babel/typescript",
               ],
             },
