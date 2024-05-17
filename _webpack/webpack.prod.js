@@ -2,6 +2,7 @@ const { merge } = require("webpack-merge");
 const path = require("path");
 
 const TerserPlugin = require("terser-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const common = require("./webpack.common");
 
@@ -19,9 +20,24 @@ const prodConfiguration = {
 
   optimization: {
     minimize: true,
-    minimizer: [new TerserPlugin()],
-    runtimeChunk: {
-      name: "runtime",
+    minimizer: [
+      new TerserPlugin({
+        extractComments: true,
+        parallel: true,
+        terserOptions: {
+          compress: true,
+        },
+      }),
+    ],
+    splitChunks: {
+      chunks: "all",
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all",
+        },
+      },
     },
   },
 
@@ -30,6 +46,8 @@ const prodConfiguration = {
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
   },
+
+  plugins: [new CleanWebpackPlugin()],
 };
 
 module.exports = merge(common, prodConfiguration);

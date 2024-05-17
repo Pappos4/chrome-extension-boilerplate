@@ -9,16 +9,22 @@ const devConfiguration = {
   devtool: "inline-source-map",
 
   devServer: {
-    historyApiFallback: true,
-    open: true,
+    // Enables gzip compression
     compress: true,
     hot: true,
     port: 3000,
     webSocketServer: "sockjs",
+    allowedHosts: "all",
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
-    allowedHosts: "all",
+    client: {
+      logging: "none",
+      overlay: {
+        errors: true,
+        warnings: false,
+      },
+    },
   },
 };
 

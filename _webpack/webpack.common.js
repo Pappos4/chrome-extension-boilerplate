@@ -5,23 +5,25 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const isDevelopment = process.env.NODE_ENV === "development";
-const buildDirectory = path.resolve(__dirname, "../dist");
+
+const __rootDir = path.resolve(process.cwd());
+const __buildDir = path.join(__rootDir, "/dist");
 
 /** @type { import('webpack').Configuration } */
 const options = {
   entry: {
     // Pages
-    popup: path.join(__dirname, "../src/popup/index.tsx"),
-    settings: path.join(__dirname, "../src/settings/index.tsx"),
+    popup: path.join(__rootDir, "/src/popup/index.tsx"),
+    settings: path.join(__rootDir, "/src/settings/index.tsx"),
 
     // Api
-    background: path.join(__dirname, "../src/service_worker/index.ts"),
-    contentScript: path.join(__dirname, "../src/index.ts"),
+    background: path.join(__rootDir, "/src/service_worker/index.ts"),
+    contentScript: path.join(__rootDir, "/src/index.ts"),
   },
 
   output: {
     filename: "[name].bundle.js",
-    path: buildDirectory,
+    path: __buildDir,
   },
 
   plugins: [
@@ -30,13 +32,13 @@ const options = {
     }),
 
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "../src/popup/index.html"),
+      template: path.join(__rootDir, "/src/popup/index.html"),
       filename: "popup.html",
       chunks: ["popup"],
     }),
 
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "../src/settings/index.html"),
+      template: path.join(__rootDir, "/src/settings/index.html"),
       filename: "settings.html",
       chunks: ["settings"],
     }),
@@ -45,7 +47,7 @@ const options = {
       patterns: [
         {
           from: "public/manifest.json",
-          to: buildDirectory,
+          to: __buildDir,
           force: true,
         },
       ],
