@@ -22,7 +22,5 @@ module.exports = {
     },
   },
   plugins: ["react", "react-hooks"],
-  rules: {
-    //add customize rules here as per your project's needs
-  },
+  rules: {},
 };

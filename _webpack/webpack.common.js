@@ -65,6 +65,9 @@ const options = {
           },
           {
             loader: "css-loader",
+            options: {
+              module: true,
+            },
           },
           {
             loader: "sass-loader",

@@ -39,6 +39,9 @@ const prodConfiguration = {
     hints: false,
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
+    assetFilter: function (assetFilename) {
+      return assetFilename.endsWith(".scss") || assetFilename.endsWith(".ts");
+    },
   },
 
   plugins: [new CleanWebpackPlugin()],
