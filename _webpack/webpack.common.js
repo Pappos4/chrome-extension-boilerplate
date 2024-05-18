@@ -22,8 +22,9 @@ const options = {
   },
 
   output: {
-    filename: "[name].bundle.js",
     path: __buildDir,
+    publicPath: "/",
+    filename: "js/[name].bundle.js",
   },
 
   plugins: [

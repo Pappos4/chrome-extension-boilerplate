@@ -12,12 +12,6 @@ const prodConfiguration = {
 
   devtool: false,
 
-  output: {
-    path: path.resolve(__dirname, "../dist"),
-    publicPath: "/",
-    filename: "js/[name].bundle.js",
-  },
-
   optimization: {
     minimize: true,
     minimizer: [
